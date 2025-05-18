@@ -131,7 +131,188 @@ This structure supports authentication, product management, cart, wishlist, orde
       { "message": "Server error. Please try again later." }
       ```
 
-## 🚀 Getting Started
+### 2. **User Login (Sign In)**
+
+- **Endpoint:**  
+  `POST /api/v1/auth/signin`
+
+- **Description:**  
+  Authenticates a user using email and password.
+
+- **Request Body (`req.body`):**
+  ```json
+  {
+    "email": "user@example.com",
+    "password": "yourPassword123"
+  }
+
+  - **Success Response (`Res.data`):**
+    - **Status:** `201`
+    - **Body:**
+      ```json
+      {
+        "userExist": {
+          "_id": "userObjectId",
+          "email": "user@example.com",
+          "phoneNumber": "1234567890",
+          "password": "hashedPassword",
+          "__v": 0
+        },
+        "success": true
+      }
+      ```
+
+- **Error Responses:**
+
+  - **Missing Fields:**  
+    - **Status:** `400 Bad Request`
+    - **Body:**  
+      ```json
+      { "message": "All Field Required" }
+      ```
+
+  - **User Not Found:**  
+    - **Status:** `404 Not Found`
+    - **Body:**  
+      ```json
+      { "message": "User Not Found" }
+      ```
+
+  - **Invalid Password:**  
+    - **Status:** `404 Not Found`
+    - **Body:**  
+      ```json
+      { "message": "Invalid Password" }
+      ```
+
+  - **Server Error:**  
+    - **Status:** `500 Internal Server Error`
+    - **Body:**  
+      ```json
+      { "message": "Server error. Please try again later." }
+      ```
+
+    ## ⚡ User Authentication Routing Documentation
+
+    ### 1. **User Registration (Sign Up)**
+
+    - **Endpoint:**  
+        `POST /api/v1/auth/signup`
+
+    - **Description:**  
+        Registers a new user with email, password, and phone number.
+
+    - **Request Body (`req.body`):**
+        ```json
+        {
+            "email": "user@example.com",
+            "password": "yourPassword123",
+            "phone": "1234567890"
+        }
+        ```
+
+    - **Success Response (`Res.data`):**
+        - **Status:** `201`
+        - **Body:**  
+            ```json
+            {
+                "success": true,
+                "user": {
+                    "_id": "userObjectId",
+                    "email": "user@example.com",
+                    "phoneNumber": "1234567890",
+                    "password": "hashedPassword",
+                    "__v": 0
+                }
+            }
+            ```
+
+    - **Error Responses:**
+
+        - **Missing Fields:**  
+            - **Status:** `400 Bad Request`
+            - **Body:**  
+                ```json
+                { "message": "All fields are required " }
+                ```
+
+        - **Email Already Exists:**  
+            - **Status:** `409 Conflict`
+            - **Body:**  
+                ```json
+                { "message": "Email Already Exist!" }
+                ```
+
+        - **Server Error:**  
+            - **Status:** `500 Internal Server Error`
+            - **Body:**  
+                ```json
+                { "message": "Server error. Please try again later." }
+                ```
+
+    ---
+
+    ### 2. **User Login (Sign In)**
+
+    - **Endpoint:**  
+        `POST /api/v1/auth/signin`
+
+    - **Description:**  
+        Authenticates a user using email and password.
+
+    - **Request Body (`req.body`):**
+        ```json
+        {
+            "email": "user@example.com",
+            "password": "yourPassword123"
+        }
+        ```
+
+    - **Success Response (`Res.data`):**
+        - **Status:** `201`
+        - **Body:**
+            ```json
+            {
+                "userExist": {
+                    "_id": "userObjectId",
+                    "email": "user@example.com",
+                    "phoneNumber": "1234567890",
+                    "password": "hashedPassword",
+                    "__v": 0
+                },
+                "success": true
+            }
+            ```
+
+    - **Error Responses:**
+
+        - **Missing Fields:**  
+            - **Status:** `400 Bad Request`
+            - **Body:**  
+                ```json
+                { "message": "All Field Required" }
+                ```
+
+        - **User Not Found:**  
+            - **Status:** `404 Not Found`
+            - **Body:**  
+                ```json
+                { "message": "User Not Found" }
+                ```
+
+        - **Invalid Password:**  
+            - **Status:** `404 Not Found`
+            - **Body:**  
+                ```json
+                { "message": "Invalid Password" }
+                ```
+
+        - **Server Error:**  
+            - **Status:** `500 Internal Server Error`
+            - **Body:**  
+                ```json
+                { "message": "Server error. Please try again later." }
+                ```
 
 1. **Install dependencies:**
    ```bash
