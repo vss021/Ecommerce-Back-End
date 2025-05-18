@@ -56,7 +56,80 @@ Logs user login activity.
 - **Fields:** User reference, login timestamp, IP address, user agent, device info.
 - **Purpose:** Security and auditing of user logins.
 
+
+**Legend:**  
+- PK = Primary Key  
+- FK = Foreign Key  
+- [ ... ] = Array of embedded documents or references  
+- 1——< = One-to-many relationship
+
 ---
+
+**Summary of Relationships:**
+- A USER can have many ORDERS, ADD_TO_CART, LIKE, LOGIN_HISTORY, and REVIEWS.
+- A PRODUCT can have many REVIEWS and be referenced in many ORDER_ITEM, ADD_TO_CART, and LIKE.
+- An ORDER contains multiple ORDER_ITEMs, each referencing a PRODUCT.
+- ADD_TO_CART and LIKE reference multiple PRODUCTS for a USER.
+- LOGIN_HISTORY logs multiple entries per USER.
+
+This structure supports authentication, product management, cart, wishlist, order processing, and login auditing.
+---
+
+## 🛣️ User Authentication Routing Documentation
+
+### 1. **User Registration (Sign Up)**
+
+- **Endpoint:**  
+  `POST /api/v1/auth/signup`
+
+- **Description:**  
+  Registers a new user with email, password, and phone number.
+
+- **Request Body (`req.body`):**
+  ```json
+  {
+    "email": "user@example.com",
+    "password": "yourPassword123",
+    "phone": "1234567890"
+  }
+
+- **Success Response (`Res.data`):**
+    - **Status:** `201 `
+    - **Body:**  
+```json
+{
+  "success": true,
+  "user": {
+    "_id": "userObjectId",
+    "email": "user@example.com",
+    "phoneNumber": "1234567890",
+    "password": "hashedPassword",
+    "__v": 0
+  }
+}
+
+- **Error Responses:**
+
+  - **Missing Fields:**  
+    - **Status:** `400 Bad Request`
+    - **Body:**  
+      ```json
+      { "message": "All fields are required " }
+      ```
+
+  - **Email Already Exists:**  
+    - **Status:** `409 Conflict`
+    - **Body:**  
+      ```json
+      { "message": "Email Already Exist!" }
+      ```
+
+  - **Server Error:**  
+    - **Status:** `500 Internal Server Error`
+    - **Body:**  
+      ```json
+      { "message": "Server error. Please try again later." }
+      ```
 
 ## 🚀 Getting Started
 
