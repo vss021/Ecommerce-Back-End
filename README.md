@@ -92,7 +92,7 @@ This structure supports authentication, product management, cart, wishlist, orde
     "password": "yourPassword123",
     "phone": "1234567890"
   }
-
+```
 - **Success Response (`Res.data`):**
     - **Status:** `201 `
     - **Body:**  
@@ -145,6 +145,7 @@ This structure supports authentication, product management, cart, wishlist, orde
     "email": "user@example.com",
     "password": "yourPassword123"
   }
+  ```
 
   - **Success Response (`Res.data`):**
     - **Status:** `201`
