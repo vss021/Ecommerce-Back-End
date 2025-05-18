@@ -1,0 +1,31 @@
+# Node modules folder (don't commit dependencies)
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment variables file (store secrets here)
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build output folders
+dist/
+build/
+
+# IDE/editor specific files
+.vscode/
+.idea/
+
+# Coverage reports
+coverage/
+
+# Optional npm cache
+.npm/
+
+# Ignore compiled JavaScript if using TypeScript
+*.tsbuildinfo
