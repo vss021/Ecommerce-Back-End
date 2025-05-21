@@ -27,6 +27,11 @@ const reviewSchema = new mongoose.Schema(
 
 const productSchema = new mongoose.Schema(
   {
+    productAddedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "USER",
+      required: true,
+    },
     productName: {
       type: String,
       required: true,
@@ -73,10 +78,13 @@ const productSchema = new mongoose.Schema(
     },
     imageUrls: [
       {
-        url: {
-          type: String,
-          required: true,
-        },
+       url: {
+        type: String,
+        default: "https://t3.ftcdn.net/jpg/05/08/16/68/360_F_508166846_213FSKJfFuio2g1e4FeYVguHsFfzTDKx.jpg",
+      },
+      public_id: {
+        type: String,
+      },
         imageAltText: {
           type: String,
           default: "",
@@ -94,6 +102,33 @@ const productSchema = new mongoose.Schema(
       default: 0,
     },
     reviews: [reviewSchema],
+
+    // Likes
+    likes: [{ 
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'User' 
+    }],
+
+    purchaseCount: {
+      type: Number,
+      default: 0,
+    },
+
+    color: [
+      {
+        type: String,
+        default: '',
+      },
+    ],
+
+    size: [
+      {
+        type: String,
+        default: 'small',
+      },
+    ],
+
+
     isAvailable: {
       type: Boolean,
       default: true,

@@ -6,12 +6,11 @@ const orderItemSchema  = new mongoose.Schema({
 
     productId : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : "PRODUCTS",
+        ref : "PRODUCTMODEL",
         required : true,
-        unique : true,
     },
     quantity : {
-        type : Numeber,
+        type : Number,
         required : true,
         min : 1,
     },
@@ -29,11 +28,8 @@ const orderSchema = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : "USER",
         required : true,
-        unique : true,
     },
-    purchaseItems : [
-        {orderItemSchema}
-    ],
+    purchaseItems : [ orderItemSchema],
 
     totalAmount : {
         type : Number,
@@ -76,7 +72,7 @@ const orderSchema = new mongoose.Schema({
     },
     paymentStatus : {
         type : String,
-        enum : ["pending", "online", "faild", "refunded"],
+        enum : ["pending", "online", "failed", "refunded"],
         default : "pending"
     },
     orderStatus : {

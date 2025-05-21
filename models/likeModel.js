@@ -13,7 +13,6 @@ const likeSchema = new mongoose.Schema({
         {
             type : mongoose.Schema.Types.ObjectId,
             ref : "PRODUCTS",
-            unique : true,
             required : true,
         }],
 }, {timestamps : true});

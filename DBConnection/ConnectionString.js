@@ -4,10 +4,7 @@ import mongoose from "mongoose";
 export const ConnectingToDB = async () => {
   try {
     // Attempt to connect using the MONGO_URL from .env
-    const conn = await mongoose.connect(process.env.MOGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const conn = await mongoose.connect(process.env.MOGO_URL);
 
     // Log successful connection details
     console.log(`✅ MongoDB connected: ${conn.connection.name}`); // e.g., "Ecommerc"

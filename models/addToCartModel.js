@@ -22,7 +22,7 @@ const AddToCartSchem = new mongoose.Schema({
         required : true,
     },
 
-    productsId : [productItemSchema],
+    cartItems : [productItemSchema],
 }, {timestamps : true});
 
 

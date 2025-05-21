@@ -19,6 +19,6 @@ const loginHistorySchema = new mongoose.Schema({
     Device : String,
 });
 
-const HISTORYMODEL = mongoose.model(HISTORYMODEL, loginHistorySchema);
+const HISTORYMODEL = mongoose.model("HISTORYMODEL", loginHistorySchema);
 
 export default HISTORYMODEL;
